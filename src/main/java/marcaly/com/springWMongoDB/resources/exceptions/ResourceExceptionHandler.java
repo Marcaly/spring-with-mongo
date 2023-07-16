@@ -2,7 +2,6 @@ package marcaly.com.springWMongoDB.resources.exceptions;
 
 import jakarta.servlet.http.HttpServletRequest;
 import marcaly.com.springWMongoDB.service.exception.ObjectNotFoundException;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
