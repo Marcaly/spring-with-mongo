@@ -2,6 +2,7 @@ package marcaly.com.springWMongoDB.config;
 
 import marcaly.com.springWMongoDB.domain.Post;
 import marcaly.com.springWMongoDB.domain.User;
+import marcaly.com.springWMongoDB.dto.AuthorDTO;
 import marcaly.com.springWMongoDB.repository.PostRepository;
 import marcaly.com.springWMongoDB.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,12 @@ public class Instantiation implements CommandLineRunner {
         User alex = new User(null, "Alex", "alex@gmail.com");
         User nala = new User(null, "Nala", "Nala@gmail.com");
 
-        Post post1 = new Post(null, "Partiu viagem", sdf.parse("21/03/2019"),"Vou viajar para SP", maria);
-        Post post2 = new Post(null, "Bom dia", sdf.parse("22/04/2019"),"Acordei feliz", maria);
+        userRepository.saveAll(Arrays.asList(maria, alex, nala));              
 
-        userRepository.saveAll(Arrays.asList(maria,alex,nala));
-        postRepository.saveAll(Arrays.asList(post1,post2));
+        Post post1 = new Post(null, "Partiu viagem", sdf.parse("21/03/2019"), "Vou viajar para SP", new AuthorDTO(maria));
+        Post post2 = new Post(null, "Bom dia", sdf.parse("22/04/2019"), "Acordei feliz", new AuthorDTO(maria));
+
+
+        postRepository.saveAll(Arrays.asList(post1, post2));
     }
 }
